@@ -1,21 +1,21 @@
 def conv_init():#握手
      serial_ctrl.serial_config(115200,"cs8","none",1)#设置基本连接参数
      serial_ctrl.write_number(1001) #尝试连接，发送测试字符
-     accept=serial_ctrl.read_line([10.0]) #返回连接结果
+     accept=serial_ctrl.read_line(10.0) #返回连接结果
      if len(accept)==0:
          return False
      else:
          return int(accept)
 def heart():#心跳
     serial_ctrl.write_number(1002)#发送心跳数据包
-    accept=serial_ctrl.read_line([1.5])#接收返回值
+    accept=serial_ctrl.read_line(1.5)#接收返回值
     if len(accept)==0:
         return False
     else:
         return accept
 def send(skill_num1,verif):#发送技能编号和校验码
     serial_ctrl.write_numbers(skill_num1,verif)
-    accept=serial_ctrl.read_line([1.5])
+    accept=serial_ctrl.read_line(1.5)
     if len(accept)==0:
          return False
     elif accept==1001:
