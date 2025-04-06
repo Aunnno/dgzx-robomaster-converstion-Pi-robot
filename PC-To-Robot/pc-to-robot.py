@@ -6,6 +6,7 @@ def conv_init():#握手
          return False
      else:
          return int(accept)
+     
 def heart():#心跳
     serial_ctrl.write_number(1002)#发送心跳数据包
     accept=serial_ctrl.read_line(1.5)#接收返回值
@@ -13,6 +14,7 @@ def heart():#心跳
         return False
     else:
         return accept
+    
 def send(skill_num1,verif):#发送技能编号和校验码
     serial_ctrl.write_numbers(skill_num1,verif)
     accept=serial_ctrl.read_line(1.5)
@@ -20,6 +22,7 @@ def send(skill_num1,verif):#发送技能编号和校验码
          return False
     elif accept==1001:
          return True
+    
 def inv(accept):
     if accept!=False:    #为什么要写报错提示呢主要是为了方便调试
         if accept==1001:
@@ -42,6 +45,7 @@ def inv(accept):
     else:
         print("连接丢失")
         return 0
+    
 def main():
    if not conv_init():#调用函数同时检验结果，下同
        print("连接失败")
