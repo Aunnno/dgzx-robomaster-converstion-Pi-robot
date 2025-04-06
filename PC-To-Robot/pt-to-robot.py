@@ -20,6 +20,28 @@ def send(skill_num1,verif):#发送技能编号和校验码
          return False
     elif accept==1001:
          return True
+def inv(accept):
+    if accept!=False:    #为什么要写报错提示呢主要是为了方便调试
+        if accept==1001:
+                return 1
+        elif accept==1102:
+                print("技能启动失败")
+                return 0
+        elif accept==1103:
+                print("技能执行失败")
+                return 0
+        elif accept==1003:
+                print("技能启动成功")
+                return 1
+        elif accept==1004:
+                print("技能关闭")
+                return 0
+        elif accept==1005:
+                print("通信结束")
+                return 0
+    else:
+        print("连接丢失")
+        return 0
 def main():
    if not conv_init():#调用函数同时检验结果，下同
        print("连接失败")
@@ -28,26 +50,8 @@ def main():
    if not send(skill_num,1003):
        print("技能启动失败")
        return 0
-   while True:
-       accept=heart()
-       if accept!=False:    #为什么要写报错提示呢主要是为了方便调试
-            if accept==1001:
-                continue
-            elif accept==1102:
-                print("技能启动失败")
-                return 0
-            elif accept==1103:
-                print("技能执行失败")
-                return 0
-            elif accept==1003:
-                print("技能启动成功")
-                continue
-            elif accept==1004:
-                print("技能关闭")
-                return 0
-            elif accept==1005:
-                print("通信结束")
-                return 0
-       else:
-            print("连接丢失")
-            return 0
+   accept=heart()
+   while inv(accept):
+        accept=heart()
+        continue
+      
