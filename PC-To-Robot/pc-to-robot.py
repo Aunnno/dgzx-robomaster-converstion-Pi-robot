@@ -1,5 +1,5 @@
+serial_ctrl.serial_config(115200,"cs8","none",1)#设置基本连接参数
 def conv_init():#握手
-     serial_ctrl.serial_config(115200,"cs8","none",1)#设置基本连接参数
      serial_ctrl.write_number(1001) #尝试连接，发送测试字符
      accept=serial_ctrl.read_line(10.0) #返回连接结果
      if len(accept)==0:
