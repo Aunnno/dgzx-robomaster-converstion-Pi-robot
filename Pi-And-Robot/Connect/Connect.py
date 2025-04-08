@@ -24,9 +24,11 @@ def conv_init():#握手函数
 def heart(num):#心跳函数
     accept=ser.readline(1.5)#1.5秒超时
     if len(accept)!=0:
-       ser.write(num)
+        ser.write(num)
+        return 1
     else:
         print("连接丢失")
+        return 0
 
 def connect(num):
     conv_init()
