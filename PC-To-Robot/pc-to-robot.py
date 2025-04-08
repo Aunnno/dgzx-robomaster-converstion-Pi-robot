@@ -8,20 +8,26 @@ def conv_init():#握手
          return int(accept)
      
 def heart():#心跳
-    serial_ctrl.write_number(1002)#发送心跳数据包
+    serial_ctrl.write_number(1002)#发送心跳代码
     accept=serial_ctrl.read_line(1.5)#接收返回值
     if len(accept)==0:
         return False
     else:
         return accept
     
-def send(skill_num1,verif):#发送技能编号和校验码
-    serial_ctrl.write_numbers(skill_num1,verif)
+def send(skill_num):#发送技能编号
+    serial_ctrl.write_number(skill_num)
     accept=serial_ctrl.read_line(1.5)
     if len(accept)==0:
-         return False
-    elif accept==1001:
-         return True
+        return False
+    elif int(accept)==1001:
+        return True
+    elif int(accept)==1102:
+        print("技能启动失败")
+        return False
+    elif int(accept)==1103:
+        print("技能执行失败")
+        return False
     
 def inv(accept):
     if accept!=False:    #为什么要写报错提示呢主要是为了方便调试
@@ -51,8 +57,7 @@ def main():
        print("连接失败")
        return 0
    skill_num=0
-   if not send(skill_num,1003):
-       print("技能启动失败")
+   if not send(skill_num):
        return 0
    accept=heart()
    while inv(accept):
