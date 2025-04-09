@@ -135,4 +135,55 @@ def heart(num):#心跳函数
 * 心跳函数，1.5s未接收到信息就超时
 
 ### 四、编码对照表
-未完待续
+#### 通信编码
+<table>
+  <tr>
+  <th>编码</th>
+  <th>含义</th>
+  </tr>
+  <tr>
+    <td>1001</td>
+    <td>握手</td>
+  </tr>
+  <tr>
+    <td>1002</td>
+    <td>心跳</td>
+  </tr>
+  <tr>
+    <td>1003</td>
+    <td>技能启动</td>
+  </tr>
+  <tr>
+    <td>1004</td>
+    <td>技能关闭</td>
+  </tr>
+  <tr>
+    <td>1005</td>
+    <td>结束通信</td>
+  </tr>
+</table>
+
+#### 错误代码
+<table>
+  <tr>
+  <th>编码</th>
+  <th>含义</th>
+  </tr>
+  <tr>
+    <td>1100</td>
+    <td>一切正常</td>
+  </tr>
+  <tr>
+    <td>1101</td>
+    <td>连接失败</td>
+  </tr>
+  </tr>
+  <tr>
+    <td>1102</td>
+    <td>技能启动失败</td>
+  </tr>
+  <tr>
+    <td>1103</td>
+    <td>技能执行失败</td>
+  </tr>
+</table>
